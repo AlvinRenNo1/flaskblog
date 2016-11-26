@@ -1,0 +1,92 @@
+{% extends "flat_ui.html" %}
+
+{% block title %}登陆{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        body {
+            background-image: url("http://pics-resource.oss-cn-shanghai.aliyuncs.com/login_background.png");
+            background-size: cover;
+        }
+
+        .login-form .login-field {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .login-form {
+            top: -28px;
+            background-color: rgba(255, 255, 255, 0.2);
+
+        }
+
+        .login-field {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .login-link {
+            color: #eeeeee;
+        }
+
+        .rope-hole {
+            margin-right: 110px;
+            margin-left: 110px;
+            padding: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 3px;
+        }
+
+        .rope {
+            background-image: url("http://pics-resource.oss-cn-shanghai.aliyuncs.com/rope2.png");
+            background-color: white;
+            height: 238px;
+            margin-left: 140px;
+            margin-right: 140px;
+            opacity: 0.75;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="rope">
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-form">
+            <div class="form-top">
+                <div class="rope-hole">
+                </div>
+            <div>
+            <div style="text-align: center; margin-top: 35px;"><h6 style="color: rgb(255, 255, 255)">账号登录</h6></div>
+                <form method="post" action="{{ request.url }}">
+                    <div class="form-group" style="margin-top: 25px;">
+                    <input type="text" class="form-control login-field" value="" placeholder="请输入您的姓名" id="login-name" name="login_name" autocomplete="off"/>
+                    <label class="login-field-icon fui-user" for="login-name"></label>
+                    </div>
+
+                    <div class="form-group">
+                    <input type="password" class="form-control login-field" value="" placeholder="请输入您的密码" id="login-pass" name="password"/>
+                    <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" style="background-color: #91c46c">登录</button>
+
+                {% for message in get_flashed_messages() %}
+                    <p class="text-danger" style="text-align: center; font-size: 14px; margin-bottom: 0;">{{ message }}</p>
+                {% endfor %}
+                </form>
+{#                <a class="login-link" href="#" style="margin-top: 5px; padding-bottom: 30px;">新用户</a>#}
+                <div style="margin-top: 0; padding-bottom: 30px; text-align: center">
+                    <a class="login-link" href="{{ url_for('auth.register') }}" style="display: inline-block">新用户</a>
+                    <div style="width: 10px; display: inline-block"></div>
+                    <a class="login-link" href="#" style="display: inline-block">忘记密码</a>
+                </div>
+            </div>
+        </div
+    </div>
+{% endblock %}

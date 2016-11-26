@@ -1,0 +1,11 @@
+{% extends "flat_ui.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}EGO{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <p>因为决定从心开始, 所以决定重新开始 : )</p>
+    <h1>欢迎你, {{ current_user.user_name }}</h1>
+</div>
+{% endblock %}
